@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const Book = require('../models/book')
 const currDate = new Date();
 const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -28,7 +27,6 @@ router.post('/add-book',async(req,res) => {
 
 router.get('/get-books',async(req,res) => {
     const booksInfo = await Book.find({})
-    console.log(booksInfo)
     try{
         res.status(200).json({
             status : 'Success',
