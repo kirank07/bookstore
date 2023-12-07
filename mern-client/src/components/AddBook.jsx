@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Container,
   Table,
   TableBody,
   TableCell,
@@ -100,8 +101,9 @@ const AddBook = ({ books, onAddBook, onUpdateBook, onDeleteBook }) => {
   return (
     <div>
       <h1>Book List</h1>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <TableContainer component={Paper}>
+      <Container maxWidth="lg">
+        
+        <TableContainer component={Paper} sx={{ bgcolor: '#DBEBFD' }}>
           <Tooltip title="Add Book">
             <IconButton>
               <PlusIcon onClick={() => setIsFormOpen(true)} />
@@ -135,7 +137,8 @@ const AddBook = ({ books, onAddBook, onUpdateBook, onDeleteBook }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      </div>
+        
+      </Container>
       <Dialog open={isFormOpen} onClose={() => setIsFormOpen(false)}>
         <DialogTitle>{selectedBookId ? 'Update' : 'Add'} Book</DialogTitle>
         <DialogContent>
@@ -179,6 +182,8 @@ const AddBook = ({ books, onAddBook, onUpdateBook, onDeleteBook }) => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      
     </div>
   );
 };
