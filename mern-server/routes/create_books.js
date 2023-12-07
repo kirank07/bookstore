@@ -15,12 +15,17 @@ router.post('/add-book',async(req,res) => {
         })
         const saveBook = await newBook.save()
         res.status(201).json({
-            status : 'Success',
+            status : 'success',
+            msg: 'Record Added!',
             data : {
                 saveBook
             }
         })
     }catch(error){
+        res.status(500).json({
+            status : 'error',
+            message : err
+        })
         console.error(error)
     }
 })
@@ -29,14 +34,14 @@ router.get('/get-books',async(req,res) => {
     const booksInfo = await Book.find({})
     try{
         res.status(200).json({
-            status : 'Success',
+            status : 'success',
             data : {
                 booksInfo
             }
         })
     }catch(error){
         res.status(500).json({
-            status : 'Failed',
+            status : 'error',
             message : err
         })
         console.log(error)
@@ -49,15 +54,16 @@ router.patch('/update-book/:id', async (req,res) => {
         runValidators : true
     })
     try{
-        res.status(200).json({
-            status : 'Success',
+        res.status(202).json({
+            status : 'success',
+            msg: 'Record Updated!',
             data : {
                 updateBook
             }
           })
     }catch(err){
         res.json({
-            status : 'Failed',
+            status : 'error',
             message : err
         })
         console.log(err)
@@ -65,15 +71,16 @@ router.patch('/update-book/:id', async (req,res) => {
 })
 
 router.delete('/delete-book/:id', async (req,res) => {
-    await Book.findByIdAndDelete(req.params.id)
+    const deleteBook = await Book.findByIdAndDelete(req.params.id,req.body)
     try{
-        res.status(204).json({
-            status : 'Success',
-            data : {}
+        res.status(202).json({
+            status : 'error',
+            msg: 'Record Deleted!',
+            data : { deleteBook }
         })
     }catch(err){
         res.status(500).json({
-            status : 'Failed',
+            status : 'error',
             message : err
         })
         console.log(err)
