@@ -8,10 +8,10 @@ import Axios from 'axios';
 const initialBooks = [
   {
       _id : '',
-      book_name: 'The Great Gatsby',
-      book_author: 'F. Scott Fitzgerald',
-      book_price: '$10.99',
-      book_publish_date: '1925-04-10',
+      book_name: 'The Secret',
+      book_author: 'Rhonda Byrne',
+      book_price: '250',
+      book_publish_date: '2006-11-10',
   },
 
 ];
