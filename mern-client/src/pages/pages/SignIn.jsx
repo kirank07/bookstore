@@ -39,7 +39,6 @@ export default function SignIn() {
     const enteredEmail = data.get('email');
     const enteredPassword = data.get('password');
 
-    // Hardcoded credentials for demo purposes
     const hardcodedEmail = 'admin@test.com';
     const hardcodedPassword = 'password@123';
 
